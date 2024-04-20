@@ -1,4 +1,4 @@
-package com.mycomp.tests;
+package com.mycomp.tests.pac_01_playwrigtIntro;
 
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserType;
