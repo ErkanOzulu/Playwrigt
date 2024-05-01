@@ -8,31 +8,39 @@ import java.util.List;
 
 public class P05_ClickWithIndex {
     @Test
-    void test1(){
-        Playwright playwright=Playwright.create();
+    void test1() {
+        Playwright playwright = Playwright.create();
         Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
 
         Page page = browser.newPage();
         page.navigate("https://practice.cydeo.com");
-        BrowserUtils.waitWithPage(page,3);
+        BrowserUtils.waitWithPage(page, 3);
 
 
         page.locator("div#content a").first().click();
-        BrowserUtils.waitWithPage(page,1);
+        BrowserUtils.waitWithPage(page, 1);
         page.goBack();
-        BrowserUtils.waitWithPage(page,1);
+        BrowserUtils.waitWithPage(page, 1);
         page.locator("div#content a").last().click();
-        BrowserUtils.waitWithPage(page,1);
+        BrowserUtils.waitWithPage(page, 1);
         page.goBack();
-        BrowserUtils.waitWithPage(page,1);
+        BrowserUtils.waitWithPage(page, 1);
         page.locator("div#content a").nth(4).click();
-        BrowserUtils.waitWithPage(page,1);
+        BrowserUtils.waitWithPage(page, 1);
 
         page.goBack();
 
 
         List<ElementHandle> elementHandles = page.querySelectorAll("div#content a");
         System.out.println("elementHandles.size() = " + elementHandles.size());
+
+//        for (ElementHandle elementHandle : elementHandles) {
+//            if (elementHandle.textContent().equals("A/B Testing")) {
+//                elementHandle.click();
+//                break;
+//            }
+//
+//              }
 
         for (int i = 0; i < elementHandles.size(); i++) {
 
@@ -44,13 +52,13 @@ public class P05_ClickWithIndex {
         }
 
 
-        page.close();
-        browser.close();
-        playwright.close();
+
+            System.out.println("page.url() = " + page.url());
+
+            page.close();
+            browser.close();
+            playwright.close();
 
 
     }
-
-
-
 }
