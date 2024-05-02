@@ -44,7 +44,7 @@ public class Driver {
                     page = browser.newContext().newPage();
                     break;
 
-                case "edge" :
+                case "edge":
                     browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("msedge").setHeadless(false));
                     page = browser.newContext().newPage();
                     break;
@@ -68,7 +68,7 @@ public class Driver {
             page = null;
             browser.close();
             browser = null;
-
+            playwright.close();
             playwright = null;
         }
 
