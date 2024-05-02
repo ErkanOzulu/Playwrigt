@@ -47,6 +47,6 @@ public class P02_UseConfigReaderWithBrowserFactory {
     @Test
     void test1() {
 
-       page.navigate("https://www.google.com");
+       page.navigate(ConfigurationReader.getProperty("url"));
     }
 }
