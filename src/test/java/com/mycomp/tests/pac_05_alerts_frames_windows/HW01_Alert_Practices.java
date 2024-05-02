@@ -54,8 +54,11 @@ public class HW01_Alert_Practices {
         //TC #2: Prompt alert practice
 
         //3. Click to “Click for JS Prompt” button
-
-        page.onDialog(dialog -> dialog.accept("prompt"));
+//        page.onceDialog(dialog -> dialog.accept("prompt")); both onceDialog and onDialog works
+        page.onDialog(dialog -> {
+            dialog.accept("prompt");
+            System.out.println(String.format("Dialog message: %s", dialog.message()));
+        });
         page.locator(".btn.btn-primary").nth(2).click();
 
 
@@ -68,6 +71,7 @@ public class HW01_Alert_Practices {
         //5. Verify “You entered: prompt” text is displayed.
         playwright.selectors().setTestIdAttribute("id");
         Assertions.assertEquals("You entered: prompt", page.getByTestId("result").textContent());
+
 
     }
 
